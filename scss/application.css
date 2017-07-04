@@ -1,0 +1,18 @@
+#main {
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+
+.question {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px; }
+
+.a {
+  float: left; }
+
+.b {
+  float: right; }
+
+/*# sourceMappingURL=application.css.map */
