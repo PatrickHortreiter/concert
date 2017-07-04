@@ -17,7 +17,7 @@ if(isset($_POST['email'])&&isset($_POST['password'])){
 
     $plainTextPassword = mysqli_real_escape_string($pdo, $plainTextPassword);
 
-    $sql = "SELECT `usersID`,`password` FROM `users` WHERE `email` = '$email'";
+    $sql = "SELECT `userID`,`password` FROM `user` WHERE `email` = '$email'";
     $result = mysqli_query($pdo, $sql);
 
     if(!$result) {
