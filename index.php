@@ -2,6 +2,9 @@
 include 'includes/login.php';
 ?>
 <?php
+include 'includes/ologin.php';
+?>
+<?php
 include 'includes/newUserDB.php';
 ?>
 <!DOCTYPE html>
@@ -36,6 +39,7 @@ include 'includes/newUserDB.php';
 
         <!--Loginbox-->
         <div class="loginbox">
+            <h3>User Login</h3>
             <form action="" method="POST">
                 <div class="form-group">
                     <input type="text" class="form-control" id="email" name="email" placeholder="Email">
@@ -75,7 +79,9 @@ include 'includes/newUserDB.php';
                     </div>
                 <?php endif; ?>
         </div>
+    <!--Admin Login-->
     <div class="loginbox">
+        <h3>Admin Login</h3>
         <form action="" method="POST">
             <div class="form-group">
                 <input type="text" class="form-control" id="oName" name="oName" placeholder="OrganizerName">
@@ -86,30 +92,7 @@ include 'includes/newUserDB.php';
             <button class="btn btn-default" type="submit">
                 Login
             </button>
-
         </form>
-        <?php if ($ifError && !$regsuccess && !$regfail): ?>
-            <div class="error">
-                <p>Wrong email or password! Please try again.</p> <!-- Error message if typed in wrong password or wrong email -->
-            </div>
-        <?php endif; ?>
-        <?php if ($regfail): ?>
-            <div class="error">
-                <p>This email has already been registered.</p> <!-- Error message if tried to register with existing email -->
-            </div>
-        <?php endif ?>
-
-        <?php if ($passfail): ?>
-            <div class="error">
-                <p>Passwords are not identical. Please try to register again.</p> <!-- Error message if passwords do not match in registration -->
-            </div>
-        <?php endif ?>
-
-        <?php if ($regsuccess): ?>
-            <div class="regsuccess">
-                <p>Registration was successful!</p> <!-- Success message if registration did not have any errors -->
-            </div>
-        <?php endif; ?>
     </div>
 
      <!-- Lightbox for registration -->

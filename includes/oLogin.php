@@ -2,10 +2,6 @@
 include "dbconnect.php";
 
 // User-Login
-
-
-session_start();
-
 $ifError = false;
 
 if(isset($_POST['oName'])&&isset($_POST['oPassword'])){
@@ -24,11 +20,11 @@ if(isset($_POST['oName'])&&isset($_POST['oPassword'])){
     if(mysqli_num_rows($result) > 0) {
         $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
 
-        $passwordFromDb = $row['oPassword'];
+        $passwordFromDb = $row['password'];
 
         if(password_verify($plainTextPassword, $passwordFromDb)) {
             $_SESSION['login_user'] = $oName;
-            $_SESSION['login_userid'] = $row['userID'];
+            $_SESSION['login_userid'] = $row['organizerID'];
 
             header("location: application.php");
 
