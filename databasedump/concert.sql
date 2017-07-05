@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 04. Jul 2017 um 00:02
+-- Erstellungszeit: 05. Jul 2017 um 14:06
 -- Server-Version: 10.1.21-MariaDB
 -- PHP-Version: 5.6.30
 
@@ -72,16 +72,35 @@ CREATE TABLE `performance` (
 -- --------------------------------------------------------
 
 --
+-- Tabellenstruktur für Tabelle `ticket`
+--
+
+CREATE TABLE `ticket` (
+  `ticketID` int(11) NOT NULL,
+  `concertID` int(11) NOT NULL,
+  `userID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Tabellenstruktur für Tabelle `user`
 --
 
 CREATE TABLE `user` (
   `userID` int(11) NOT NULL,
-  `userName` varchar(50) NOT NULL,
+  `UserName` varchar(200) NOT NULL,
   `email` varchar(200) NOT NULL,
-  `password` varchar(100) NOT NULL,
-  `concertID` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `password` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Daten für Tabelle `user`
+--
+
+INSERT INTO `user` (`userID`, `UserName`, `email`, `password`) VALUES
+(3, 'hallo', 'hallo@hallo.de', '$2y$10$zXLQI0G2.BQhCPT02PcAF.AnsNlUVazuo5u61M6FlUrmNfS8yiBL.'),
+(4, 'asdf', 'asdf@asdf.de', '$2y$10$iDJKPppPkUw7.fBL4FCn0.H5KYpHZF194d0VpeYlZjHO3WvQYJVeq');
 
 -- --------------------------------------------------------
 
@@ -128,11 +147,18 @@ ALTER TABLE `performance`
   ADD KEY `actID` (`actID`);
 
 --
+-- Indizes für die Tabelle `ticket`
+--
+ALTER TABLE `ticket`
+  ADD PRIMARY KEY (`ticketID`),
+  ADD KEY `concertID` (`concertID`),
+  ADD KEY `userID` (`userID`);
+
+--
 -- Indizes für die Tabelle `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`userID`),
-  ADD KEY `concertID` (`concertID`);
+  ADD PRIMARY KEY (`userID`);
 
 --
 -- Indizes für die Tabelle `venue`
@@ -162,10 +188,15 @@ ALTER TABLE `concert`
 ALTER TABLE `organizer`
   MODIFY `organizerID` int(11) NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT für Tabelle `ticket`
+--
+ALTER TABLE `ticket`
+  MODIFY `ticketID` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT für Tabelle `user`
 --
 ALTER TABLE `user`
-  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT für Tabelle `venue`
 --
@@ -195,10 +226,11 @@ ALTER TABLE `performance`
   ADD CONSTRAINT `performance_ibfk_2` FOREIGN KEY (`actID`) REFERENCES `act` (`actID`);
 
 --
--- Constraints der Tabelle `user`
+-- Constraints der Tabelle `ticket`
 --
-ALTER TABLE `user`
-  ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`concertID`) REFERENCES `concert` (`concertID`);
+ALTER TABLE `ticket`
+  ADD CONSTRAINT `ticket_ibfk_1` FOREIGN KEY (`concertID`) REFERENCES `concert` (`concertID`),
+  ADD CONSTRAINT `ticket_ibfk_2` FOREIGN KEY (`userID`) REFERENCES `user` (`userID`);
 
 --
 -- Constraints der Tabelle `venue`

@@ -4,7 +4,7 @@
     if($loggedIn){
         $urmail = $_SESSION['login_user'];
     }else{
-        $urmail= '';
+        header ('location: index.php');
     }
 
 ?><!--Login/Logout-->
@@ -54,7 +54,7 @@
         <!-- Logout Button-->
         <?php if ($loggedIn):?>
             <div class = "b" style="margin-right: -20px">
-                <a href="../../../Users/Mir/Desktop/projectpiXOR-master/logout.php"><button class="btn btn-default">Logout</button></a>
+                <a href="logout.php"><button class="btn btn-default">Logout</button></a>
             </div>
         <?php endif; ?>
     </div>

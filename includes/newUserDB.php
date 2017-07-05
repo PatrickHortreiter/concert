@@ -19,7 +19,7 @@ if(isset($_POST['email'])&&isset($_POST['username'])) {
         } else {
             $hash = password_hash($password, PASSWORD_BCRYPT);
 
-            $sql = "INSERT INTO `user` (`userName`, `email`, `password`, `concertID`) VALUES ('".$username."','".$email."','".$hash."','".$concertID."')";
+            $sql = "INSERT INTO `user` (`userName`, `email`, `password`) VALUES ('".$username."','".$email."','".$hash."')";
             $result = mysqli_query($pdo, $sql);
             // echo $username;
             if ($result) {
