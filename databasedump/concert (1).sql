@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 05. Jul 2017 um 14:06
+-- Erstellungszeit: 05. Jul 2017 um 17:14
 -- Server-Version: 10.1.21-MariaDB
 -- PHP-Version: 5.6.30
 
@@ -53,8 +53,16 @@ CREATE TABLE `concert` (
 
 CREATE TABLE `organizer` (
   `organizerID` int(11) NOT NULL,
-  `organizerName` varchar(100) NOT NULL
+  `organizerName` varchar(100) NOT NULL,
+  `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Daten für Tabelle `organizer`
+--
+
+INSERT INTO `organizer` (`organizerID`, `organizerName`, `password`) VALUES
+(1, 'Redbull ', '$2y$10$kj948N34ZY2hSoZVx2/R3.TxaRwV7Qc4JzVMJE0MC3q5HiqvSAegK');
 
 -- --------------------------------------------------------
 
@@ -100,7 +108,8 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`userID`, `UserName`, `email`, `password`) VALUES
 (3, 'hallo', 'hallo@hallo.de', '$2y$10$zXLQI0G2.BQhCPT02PcAF.AnsNlUVazuo5u61M6FlUrmNfS8yiBL.'),
-(4, 'asdf', 'asdf@asdf.de', '$2y$10$iDJKPppPkUw7.fBL4FCn0.H5KYpHZF194d0VpeYlZjHO3WvQYJVeq');
+(4, 'asdf', 'asdf@asdf.de', '$2y$10$iDJKPppPkUw7.fBL4FCn0.H5KYpHZF194d0VpeYlZjHO3WvQYJVeq'),
+(5, 'Thommy', 'irgendwas@irgendwas.com', '$2y$10$hdDrQWeT8W7KhtDAS6yG1er/93Fiu3inixAvC6fI1zGVVURsX0P.2');
 
 -- --------------------------------------------------------
 
@@ -186,7 +195,7 @@ ALTER TABLE `concert`
 -- AUTO_INCREMENT für Tabelle `organizer`
 --
 ALTER TABLE `organizer`
-  MODIFY `organizerID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `organizerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT für Tabelle `ticket`
 --
@@ -196,7 +205,7 @@ ALTER TABLE `ticket`
 -- AUTO_INCREMENT für Tabelle `user`
 --
 ALTER TABLE `user`
-  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT für Tabelle `venue`
 --

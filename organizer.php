@@ -10,12 +10,7 @@
 
 </head>
 <body>
-<?php
-$sql = "SELECT hab.id, hab.userId, hab.topic, user.name FROM habitation as hab INNER JOIN USER ON user.id = hab.userId";
-$result = $db->query($sql);
 
-
-?>
 <main><div class="width">
         <div class="col-xs-10 articleTable">    <!-- div for responsive -->
 
