@@ -1,6 +1,8 @@
 <?php
 include 'includes/dbconnect.php';
+$results = mysqli_query($pdo, "SELECT * FROM user;");
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,8 +22,6 @@ include 'includes/dbconnect.php';
 
         $result = mysqli_query($pdo, "SELECT * FROM user") or die("<p><strong>PHP Info: </strong>Abfrage war nicht möglich.</p>");
 
-        //echo "<p><strong>PHP Info: </strong>Abfrage war erfolgreich.</p>";
-
         echo "<ul>";
 
         while($row = mysqli_fetch_array($result)){
@@ -30,7 +30,18 @@ include 'includes/dbconnect.php';
 
         echo "</ul>";
         ?>
-        
+        <form method="post" type="submit" action="includes/getUserByID.php">
+            <select name="userID">
+                <?php
+                while($row = mysqli_fetch_array($results)){
+                    echo "<option value='" . $row["userID"] . "'>" . $row["UserName"] . " " . $row["email"] . "</option>";
+                }
+                ?>
+            </select>
+            <input type="submit" name="action" value="Display"/>
+            <input type="submit" name="action" value="Delete"/>
+        </form>
+
 </main>
 </body>
 </html>
