@@ -18,7 +18,7 @@ if(isset($_POST['email'])&&isset($_POST['username'])) {
             $passfail = true;
         } else {
             $hash = password_hash($password, PASSWORD_BCRYPT);
-
+            echo $hash;
             $sql = "INSERT INTO `user` (`userName`, `email`, `password`) VALUES ('".$username."','".$email."','".$hash."')";
             $result = mysqli_query($pdo, $sql);
             // echo $username;
