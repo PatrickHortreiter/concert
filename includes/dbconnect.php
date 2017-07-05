@@ -1,5 +1,5 @@
 <?php
-    include_once 'dbconfig.php';
+include_once 'dbconfig.php';
 
 //Verbindung
 $pdo=new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);

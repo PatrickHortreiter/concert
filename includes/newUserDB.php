@@ -1,12 +1,11 @@
-
-<!-- USER REGISTRATION -->
-
 <?php
 include "dbconnect.php";
+
+// User-Registration
+
 $regsuccess=false;
 $regfail=false;
 $passfail=false;
-
 
 if(isset($_POST['email'])&&isset($_POST['username'])) {
     if (isset($_POST['passwort'])) {
@@ -20,9 +19,9 @@ if(isset($_POST['email'])&&isset($_POST['username'])) {
         } else {
             $hash = password_hash($password, PASSWORD_BCRYPT);
 
-            $sql = "INSERT INTO user (userName, email, password, concertID) VALUES ('" . $username . "','" . $email . "', '" . $hash . "', '" . $concertID . "');";
+            $sql = "INSERT INTO `user` (`userName`, `email`, `password`, `concertID`) VALUES ('".$username."','".$email."','".$hash."','".$concertID."')";
             $result = mysqli_query($pdo, $sql);
-            echo $username;
+            // echo $username;
             if ($result) {
 //            header('location: index.php');
                 $regsuccess = true;

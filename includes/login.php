@@ -1,9 +1,9 @@
-
-<!-- USER LOGIN -->
-
 <?php
 
-include "includes/dbconnect.php";
+include "dbconnect.php";
+
+// User-Login
+
 
 session_start();
 
