@@ -5,7 +5,7 @@ $(document).ready(function(){
 
     var header = $('body');
     var backgrounds = new Array(
-        'url(/concert/images/concert2.jpg)'
+        'url(/concert/images/concert1.jpg)'
         , 'url(/concert/images/concert2.jpg)'
         , 'url(/concert/images/concert2.jpg)'
     );
