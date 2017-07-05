@@ -1,3 +1,6 @@
+<?php
+include 'includes/dbconnect.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,21 +14,23 @@
 </head>
 <body>
 
-<main><div class="width">
-        <div class="col-xs-10 articleTable">    <!-- div for responsive -->
+<main>
+    <div class="width">
+        <?php
 
-            <table class="table table-striped"> <!-- table for the articles -->
-                <thead>
-                <tr>
-                    <th>Username</th>
-                    <th>Beitrag</th>
-                </tr>
-                </thead>
-            </table>
-            <p>&nbsp;</p>   <!-- div shows when there is no article -->
-            <div class="alert alert-info">Noch keine Wohnungen vorhanden - Sie können über den Button <strong>neuer Beitrag</strong> neue Anfragen oder Suchen hinzufügen.</div>
+        $result = mysqli_query($pdo, "SELECT * FROM user") or die("<p><strong>PHP Info: </strong>Abfrage war nicht möglich.</p>");
 
-        </div>
-    </div></main>
+        //echo "<p><strong>PHP Info: </strong>Abfrage war erfolgreich.</p>";
+
+        echo "<ul>";
+
+        while($row = mysqli_fetch_array($result)){
+            echo "<li>" . $row["UserName"] . " " . $row["email"] . "</li>";
+        }
+
+        echo "</ul>";
+        ?>
+        
+</main>
 </body>
 </html>
