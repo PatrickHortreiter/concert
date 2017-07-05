@@ -22,10 +22,10 @@ if(isset($_POST['oName'])&&isset($_POST['oPassword'])) {
         $passwordFromDb = $row['password'];
 
         if (password_verify($plainTextPassword, $passwordFromDb)) {
-            $_SESSION['login_user'] = $oName;
-            $_SESSION['login_userid'] = $row['organizerID'];
+            $_SESSION['login_organizer'] = $oName;
+            $_SESSION['login_organizerid'] = $row['organizerID'];
 
-            header("location: application.php");
+            header("location: organizer.php");
 
         }
 
