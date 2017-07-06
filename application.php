@@ -54,8 +54,8 @@ $results = mysqli_query($pdo, "SELECT * FROM concert;");
                     <td>" . $row["concertID"] . " </td>
                     <td>" . $row["venueName"] . "</td>
                     <td>" . $row["date"] . "</td>
-                    <td><input type='submit' class='btn btn-default' value='GetTicket' name='concert$i'></td>
-                    <td><input type='submit' class='btn btn-default' value='Information' name='information$i'></td>
+                    <td><input type='submit' class='btn btn-default' value='GetTicket$i' name='getticket'></td>
+                    <td><input type='submit' class='btn btn-default' value='Information$i'name='information'></td>
                   </tr>";
         }
 

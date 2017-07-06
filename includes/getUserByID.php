@@ -18,7 +18,7 @@ if ($action=="Update"){
 
         echo "
 			<form action='updateUser.php' type='submit' method='post'>
-				<p>UserID <input type='text' name='userID' value='" . $userID. "'/></p>
+				<p>UserID <input type='text' name='userID' value='" . $userID. "'/></p><p>UserID nicht verändern</p>
 				<p>UserName <input type='text' name='UserName' value='" . $row["UserName"] . "'/></p>
 				<p>Email <input type='text' name='email' value='" . $row["email"] . "'/></p>
 				<input type='submit' name='action' value='Update'/>
@@ -28,7 +28,7 @@ if ($action=="Update"){
     $sql = "DELETE FROM user WHERE userID = " . $userID . ";";
     $result = mysqli_query($pdo, $sql) or die($ordiestring);
     if ($result == 1) {
-        echo "User mit ID " . $userID . " wurde gelöscht.";
+        header ("location: ../organizer.php");
     } else {
         echo "Fehler.";
     }

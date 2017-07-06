@@ -91,6 +91,7 @@ include 'includes/newUserDB.php';
             <button class="btn btn-default" type="submit">
                 Login
             </button>
+            <p class="x">OrganizerName ->Redbull<br>Password ->asdf</p>
         </form>
     </div>
 
