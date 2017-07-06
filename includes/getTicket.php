@@ -1,11 +1,16 @@
 <?php
 include "dbconnect.php";
+	$concertID = $_POST["concertID"];
+	$userID = $_POST["userID"];
 
+	$sql = "INSERT INTO ticket (concertID, userID) VALUES ('" . $concertID . "', '" . $userID. "');";
+
+	echo "<p><strong>PHP Info: </strong>" . $sql . "</p>";
+
+	$result = mysqli_query($pdo, $sql);
+
+	echo $result;
 ?>
-<?php
-$getticket = $_POST["getticket"];
-$userID = $_POST["userID"];
-$ordiestring = "<p><strong>PHP Info: </strong>Abfrage war nicht möglich.</p>";
 
 ?>
 

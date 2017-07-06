@@ -54,15 +54,22 @@ $results = mysqli_query($pdo, "SELECT * FROM concert;");
                     <td>" . $row["concertID"] . " </td>
                     <td>" . $row["venueName"] . "</td>
                     <td>" . $row["date"] . "</td>
-                    <td><input type='submit' class='btn btn-default' value='GetTicket$i' name='getticket'></td>
-                    <td><input type='submit' class='btn btn-default' value='Information$i'name='information'></td>
                   </tr>";
         }
 
         echo "</table>";
         ?>
         </div>
+        <div>
+            <form action="includes/getTicket.php" type="submit" method="post">
+                <p>UserID: <input class="form-control"   type="text" name="userID"/></p>
+                <p>ConcertID <input class="form-control" type="text" name="concertID"/></p>
+                <input type="submit" class="btn btn-default" value="Get a ticket" name="submit"/>
+            </form>
+        </div>
+
     </div>
+
 </main>
 
 <footer>

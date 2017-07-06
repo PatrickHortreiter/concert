@@ -99,4 +99,7 @@ table {
 .x {
   color: rgba(255, 255, 255, 0.9); }
 
+.form-control {
+  width: 200px; }
+
 /*# sourceMappingURL=main.css.map */
