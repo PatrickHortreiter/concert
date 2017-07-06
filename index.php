@@ -20,7 +20,6 @@ include 'includes/newUserDB.php';
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="scss/main.css" rel="stylesheet">
     <link href="scss/home.css" rel="stylesheet">
-    <link rel="icon" href="images/logo1.png">
     <script language="javascript" type="text/javascript" src="jQuery/jQuery.js"></script>
     <script language="javascript" type="text/javascript" src="js/bootstrap.js"></script>
     <script src="js/pic.js"></script>

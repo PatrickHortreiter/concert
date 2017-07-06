@@ -2,6 +2,16 @@
 include 'includes/dbconnect.php';
 $results = mysqli_query($pdo, "SELECT * FROM user;");
 ?>
+<?php
+session_start();
+$loggedIn = isset ($_SESSION['login_organizer']);
+if($loggedIn){
+    $urmail = $_SESSION['login_organizer'];
+}else{
+    header ('location: index.php');
+}
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -59,7 +69,20 @@ $results = mysqli_query($pdo, "SELECT * FROM user;");
 
 </main>
 <footer>
-    <b>Wichtig</b>
+    <div class="width">
+
+        <!-- Displays the mail -->
+        <div class="a" style="margin-left: -20px;">
+            <p>Logged in as <b><?php echo $urmail; ?></b></p>
+        </div>
+
+        <!-- Logout Button-->
+        <?php if ($loggedIn):?>
+            <div class = "b" style="margin-right: -20px">
+                <a href="logout.php"><button class="btn btn-default">Logout</button></a>
+            </div>
+        <?php endif; ?>
+    </div>
 </footer>
 </body>
 </html>

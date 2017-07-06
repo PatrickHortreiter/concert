@@ -10,6 +10,10 @@ $ordiestring = "<p><strong>PHP Info: </strong>Abfrage war nicht möglich.</p>";
 if ($action=="Update"){
     $sql = "SELECT * FROM user WHERE userID = " . $userID . ";";
     $result = mysqli_query($pdo, $sql) or die($ordiestring);
+    echo "
+    
+    ";
+
     while($row = mysqli_fetch_array($result)){
 
         echo "
@@ -33,4 +37,5 @@ if ($action=="Update"){
 $resp = mysqli_close($pdo);
 
 ?>
+
 
