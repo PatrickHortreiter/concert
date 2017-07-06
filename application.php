@@ -64,7 +64,7 @@ $results = mysqli_query($pdo, "SELECT * FROM concert;");
         <div class="a controller table">
             <h2>Performances</h2>
             <?php
-            $result = mysqli_query($pdo, "SELECT * FROM performance WHERE concertID=1") or die("<p><strong>PHP Info: </strong>Abfrage war nicht möglich.</p>");
+            $result = mysqli_query($pdo, "SELECT perf.concertID, perf.startTime, perf.endTime, act.name FROM performance AS perf INNER JOIN act ON act.actID = act.actID") or die("<p><strong>PHP Info: </strong>Abfrage war nicht möglich.</p>");
             echo "<table><tr><th>ConcertID</th><th>Start</th><th>End</th><th>Act</th></tr>";
             $i=0;
             while($row = mysqli_fetch_array($result)){
@@ -72,7 +72,7 @@ $results = mysqli_query($pdo, "SELECT * FROM concert;");
                     <td>" . $row["concertID"] . " </td>
                     <td>" . $row["startTime"] . "</td>
                     <td>" . $row["endTime"] . "</td>
-                    <td>" . $row["actID"] . "</td>
+                    <td>" . $row["name"] . "</td>
                   </tr>";
             }
 

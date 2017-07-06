@@ -1,7 +1,7 @@
 <?php
 include "dbconnect.php";
 	$concertID = $_POST["concertID"];
-	$userID = $_POST["userID"];
+	$userID = $_POST["UserName"];
 
 
 	$sql = "INSERT INTO ticket (concertID, userID) VALUES ('" . $concertID . "', '" . $userID. "');";
