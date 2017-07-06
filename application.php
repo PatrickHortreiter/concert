@@ -65,14 +65,14 @@ $results = mysqli_query($pdo, "SELECT * FROM concert;");
             <h2>Performances</h2>
             <?php
             $result = mysqli_query($pdo, "SELECT * FROM performance WHERE concertID=1") or die("<p><strong>PHP Info: </strong>Abfrage war nicht möglich.</p>");
-            echo "<table><tr><th>ConcertID</th><th>Start</brth><th>End</th></tr>";
+            echo "<table><tr><th>ConcertID</th><th>Start</th><th>End</th><th>Act</th></tr>";
             $i=0;
             while($row = mysqli_fetch_array($result)){
-                $i++;
                 echo "<tr>
                     <td>" . $row["concertID"] . " </td>
                     <td>" . $row["startTime"] . "</td>
                     <td>" . $row["endTime"] . "</td>
+                    <td>" . $row["actID"] . "</td>
                   </tr>";
             }
 
