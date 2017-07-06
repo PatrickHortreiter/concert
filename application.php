@@ -1,4 +1,8 @@
 <?php
+include 'includes/dbconnect.php';
+$results = mysqli_query($pdo, "SELECT * FROM concert;");
+?>
+<?php
     session_start();
     $loggedIn = isset ($_SESSION['login_user']);
     if($loggedIn){
@@ -38,7 +42,26 @@
 
 <main>
     <div class="width">
-        <h2>Inhalt</h2>
+        <div class="a controller table">
+        <?php
+
+        $result = mysqli_query($pdo, "SELECT * FROM concert") or die("<p><strong>PHP Info: </strong>Abfrage war nicht möglich.</p>");
+        echo "<table><tr><th>ConcertID</th><th>Venue</brth><th>Date</th></tr>";
+        $i=0;
+        while($row = mysqli_fetch_array($result)){
+            $i++;
+            echo "<tr>
+                    <td>" . $row["concertID"] . " </td>
+                    <td>" . $row["venueName"] . "</td>
+                    <td>" . $row["date"] . "</td>
+                    <td><input type='submit' class='btn btn-default' value='GetTicket' name='concert$i'></td>
+                    <td><input type='submit' class='btn btn-default' value='Information' name='information$i'></td>
+                  </tr>";
+        }
+
+        echo "</table>";
+        ?>
+        </div>
     </div>
 </main>
 
