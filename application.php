@@ -43,6 +43,7 @@ $results = mysqli_query($pdo, "SELECT * FROM concert;");
 <main>
     <div class="width">
         <div class="a controller table">
+            <h2>Concerts</h2>
         <?php
 
         $result = mysqli_query($pdo, "SELECT * FROM concert") or die("<p><strong>PHP Info: </strong>Abfrage war nicht möglich.</p>");
@@ -60,10 +61,29 @@ $results = mysqli_query($pdo, "SELECT * FROM concert;");
         echo "</table>";
         ?>
         </div>
-        <div>
+        <div class="a controller table">
+            <h2>Performances</h2>
+            <?php
+            $result = mysqli_query($pdo, "SELECT * FROM performance WHERE concertID=1") or die("<p><strong>PHP Info: </strong>Abfrage war nicht möglich.</p>");
+            echo "<table><tr><th>ConcertID</th><th>Start</brth><th>End</th></tr>";
+            $i=0;
+            while($row = mysqli_fetch_array($result)){
+                $i++;
+                echo "<tr>
+                    <td>" . $row["concertID"] . " </td>
+                    <td>" . $row["startTime"] . "</td>
+                    <td>" . $row["endTime"] . "</td>
+                  </tr>";
+            }
+
+            echo "</table>";
+            ?>
+        </div>
+        <div class="controller">
+            <h2>Get a ticket</h2>
             <form action="includes/getTicket.php" type="submit" method="post">
-                <p>UserID: <input class="form-control"   type="text" name="userID"/></p>
-                <p>ConcertID <input class="form-control" type="text" name="concertID"/></p>
+                <p class="x">UserID: <input class="form-control"   type="text" name="userID"/></p>
+                <p class="x">ConcertID <input class="form-control" type="text" name="concertID"/></p>
                 <input type="submit" class="btn btn-default" value="Get a ticket" name="submit"/>
             </form>
         </div>

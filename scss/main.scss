@@ -139,7 +139,11 @@ table{
 .form-control{
   width: 200px;
 }
-
+.form-control {
+  background: none;
+  color: white;
+  border-radius: 0;
+}
 
 
 
