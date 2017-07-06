@@ -9,7 +9,7 @@ include "dbconnect.php";
 $result = mysqli_query($pdo, $sql);
 
 if($result == 1){
-    echo "User mit ID " . $userID . " erfolgreich aktualisiert.";
+    header ("location: ../organizer.php");
 }
 
 ?>

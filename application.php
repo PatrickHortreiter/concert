@@ -26,7 +26,6 @@
     <script language="javascript" type="text/javascript" src="js/bootstrap.js"></script>
     <script src="js/pic.js" type="text/javascript"></script>
 
-
 </head>
 
 <body>

@@ -1,11 +1,13 @@
 <?php
 include "dbconnect.php";
+?>
 
+<?php
 $userID = $_POST["userID"];
 $action = $_POST["action"];
 $ordiestring = "<p><strong>PHP Info: </strong>Abfrage war nicht möglich.</p>";
 
-if ($action=="Display"){
+if ($action=="Update"){
     $sql = "SELECT * FROM user WHERE userID = " . $userID . ";";
     $result = mysqli_query($pdo, $sql) or die($ordiestring);
     while($row = mysqli_fetch_array($result)){
@@ -31,3 +33,4 @@ if ($action=="Display"){
 $resp = mysqli_close($pdo);
 
 ?>
+

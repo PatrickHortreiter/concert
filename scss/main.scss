@@ -68,33 +68,6 @@ header{
   box-shadow: 0px 3px 9px rgba(0,0,0,.5);
 }
 
-//BUTTONS: Social Media
-.socialmedia{
-  float: right;
-  padding-right: 5px;
-}
-.social{
-  height: 32px;
-  opacity: 1;
-  margin-top: 32px;
-  margin-left:32px;
-}
-.social:hover{
-  opacity: 0.2;
-}
-
-//LOGO
-.pixor{
-  opacity: 0;
-}
-.pixor:hover{
-  opacity: 1;
-  animation: bounce 1s;
-}
-.logo{
-  height: 100px;
-}
-
 main{
   display: flex;
   align-items: center;
@@ -131,6 +104,14 @@ i{
   align-items: center;
   justify-content: center;
 
+}
+
+.a{
+  float: left;
+}
+
+.b{
+  float: right;
 }
 
 

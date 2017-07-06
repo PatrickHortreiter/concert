@@ -1,0 +1,48 @@
+$boxcolor: rgba(3,3,3,0.5);
+$buttoncolor: #333333;
+
+select {
+  background:  rgba(0,0,0,0);
+  height: 29px;
+  overflow: hidden;
+  width: 100px;
+  color: white;
+}
+select:hover{
+  color: black;
+}
+
+h2{
+  color: white;
+}
+
+.controller{
+  background-color: $boxcolor;
+  color: $buttoncolor;
+  padding: 20px;
+  padding-top: 0px;
+  box-shadow: 0 3px 9px rgba(0,0,0,.5);
+  margin-top: 20px;
+}
+
+table{
+  width: 100%;
+  color: white;
+  margin-top: 20px;
+}
+
+.user{
+  width: 40%;
+  margin-right: 20px;
+}
+
+.table{
+  width: 65%;
+  margin-left: 20px;
+}
+
+
+
+
+
+
