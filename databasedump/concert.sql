@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 05. Jul 2017 um 18:55
+-- Erstellungszeit: 06. Jul 2017 um 18:34
 -- Server-Version: 10.1.21-MariaDB
 -- PHP-Version: 5.6.30
 
@@ -33,6 +33,14 @@ CREATE TABLE `act` (
   `organizerID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Daten für Tabelle `act`
+--
+
+INSERT INTO `act` (`actID`, `name`, `members`, `organizerID`) VALUES
+(1, 'SQL-Guys', 3, 1),
+(2, 'Moneyboy', 1, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -42,8 +50,17 @@ CREATE TABLE `act` (
 CREATE TABLE `concert` (
   `concertID` int(11) NOT NULL,
   `date` date NOT NULL,
-  `venueName` varchar(255) NOT NULL
+  `venueName` varchar(255) NOT NULL,
+  `organizerID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Daten für Tabelle `concert`
+--
+
+INSERT INTO `concert` (`concertID`, `date`, `venueName`, `organizerID`) VALUES
+(1, '2017-07-30', 'Qlympiastadion', 1),
+(2, '2017-07-31', 'Turnhalle', 1);
 
 -- --------------------------------------------------------
 
@@ -77,6 +94,16 @@ CREATE TABLE `performance` (
   `concertID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Daten für Tabelle `performance`
+--
+
+INSERT INTO `performance` (`startTime`, `endTime`, `actID`, `concertID`) VALUES
+('20:30:00', '22:00:00', 1, 1),
+('20:00:00', '21:30:00', 1, 2),
+('23:00:00', '23:30:00', 2, 1),
+('22:45:00', '23:45:00', 2, 2);
+
 -- --------------------------------------------------------
 
 --
@@ -107,8 +134,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`userID`, `UserName`, `email`, `password`) VALUES
-(4, 'asdf', 'asdf@asdf.de', '$2y$10$iDJKPppPkUw7.fBL4FCn0.H5KYpHZF194d0VpeYlZjHO3WvQYJVeq'),
-(5, 'Thommy', 'irgendwas@irgendwas.com', '$2y$10$hdDrQWeT8W7KhtDAS6yG1er/93Fiu3inixAvC6fI1zGVVURsX0P.2');
+(6, 'TheKing', 'patrick.h1997@web.de', '$2y$10$IGG4szJWM0CH8oukB6ckeeE596r0ZgAPbaNxebD9CztDgqQceIE/W'),
+(7, 'KING', 'ichderking@king.de', '$2y$10$NCAi0yll5IyfevptaMF63e5KP5QlofdvGQvs5BJ70U4aWpBE8RE3u');
 
 --
 -- Indizes der exportierten Tabellen
@@ -126,7 +153,8 @@ ALTER TABLE `act`
 --
 ALTER TABLE `concert`
   ADD PRIMARY KEY (`concertID`),
-  ADD KEY `venueID` (`venueName`);
+  ADD KEY `venueID` (`venueName`),
+  ADD KEY `organizerID` (`organizerID`);
 
 --
 -- Indizes für die Tabelle `organizer`
@@ -163,17 +191,17 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT für Tabelle `act`
 --
 ALTER TABLE `act`
-  MODIFY `actID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `actID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT für Tabelle `concert`
 --
 ALTER TABLE `concert`
-  MODIFY `concertID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `concertID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT für Tabelle `organizer`
 --
 ALTER TABLE `organizer`
-  MODIFY `organizerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `organizerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT für Tabelle `ticket`
 --
@@ -183,7 +211,7 @@ ALTER TABLE `ticket`
 -- AUTO_INCREMENT für Tabelle `user`
 --
 ALTER TABLE `user`
-  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- Constraints der exportierten Tabellen
 --
@@ -193,6 +221,12 @@ ALTER TABLE `user`
 --
 ALTER TABLE `act`
   ADD CONSTRAINT `act_ibfk_1` FOREIGN KEY (`organizerID`) REFERENCES `organizer` (`organizerID`);
+
+--
+-- Constraints der Tabelle `concert`
+--
+ALTER TABLE `concert`
+  ADD CONSTRAINT `concert_ibfk_1` FOREIGN KEY (`organizerID`) REFERENCES `organizer` (`organizerID`);
 
 --
 -- Constraints der Tabelle `performance`
