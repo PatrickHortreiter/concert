@@ -71,6 +71,24 @@ if($loggedIn){
             echo "</table>";
             ?>
         </div>
+        <div class="a controller table">
+            <h2>Kein Ticket gebucht</h2>
+            <?php
+
+            $result = mysqli_query($pdo, "SELECT * FROM user WHERE userID NOT IN (SELECT userID FROM ticket)") or die("<p><strong>PHP Info: </strong>Abfrage war nicht möglich.</p>");
+            echo "<table><tr><th>UserID</th><th>UserName</brth><th>Email</th></tr>";
+
+            while($row = mysqli_fetch_array($result)){
+                echo "<tr>
+                    <td>" . $row["userID"] . " </td>
+                    <td>" . $row["UserName"] . "</td>
+                    <td>" . $row["email"] . "</td>
+                  </tr>";
+            }
+
+            echo "</table>";
+            ?>
+        </div>
         <div class="b controller user">
             <h2>Usercontroller</h2>
         <form method="post" type="submit" action="includes/getUserByID.php">

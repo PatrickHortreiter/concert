@@ -5,11 +5,10 @@ include "dbconnect.php";
 
 	$sql = "INSERT INTO ticket (concertID, userID) VALUES ('" . $concertID . "', '" . $userID. "');";
 
-	echo "<p><strong>PHP Info: </strong>" . $sql . "</p>";
 
 	$result = mysqli_query($pdo, $sql);
 
-	echo $result;
+    header("location: ../application.php");
 ?>
 
 ?>
